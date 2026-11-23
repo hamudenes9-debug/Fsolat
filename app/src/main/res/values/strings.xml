@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Fsolat</string>
+
+    <!-- Tabs -->
+    <string name="tab_home">Ana</string>
+    <string name="tab_stats">İstatistik</string>
+    <string name="tab_settings">Ayarlar</string>
+
+    <!-- Prayers -->
+    <string name="prayer_fajr">İmsak</string>
+    <string name="prayer_sunrise">Güneş</string>
+    <string name="prayer_dhuhr">Öğle</string>
+    <string name="prayer_asr">İkindi</string>
+    <string name="prayer_maghrib">Akşam</string>
+    <string name="prayer_isha">Yatsı</string>
+
+    <!-- Home -->
+    <string name="next_prayer">Sıradaki Vakit</string>
+    <string name="time_remaining">kalan süre</string>
+    <string name="today_prayers">Bugünün Vakitleri</string>
+    <string name="done_of">%1$d/%2$d kılındı</string>
+    <string name="up_next">Sıradaki</string>
+    <string name="tomorrow">Yarın</string>
+    <string name="qibla">Kıble</string>
+    <string name="qibla_distance">Kâbe\'ye %1$d km</string>
+    <string name="from_north">kuzeyden</string>
+    <string name="home_footer">Vakitler yaklaşık değerlerdir; namaz kılmadan önce cami vakitleriyle teyit edin.</string>
+
+    <!-- Stats -->
+    <string name="stats_title">İstatistik</string>
+    <string name="stats_headline">Günlük seyir</string>
+    <string name="range_week">7 gün</string>
+    <string name="range_month">30 gün</string>
+    <string name="range_season">90 gün</string>
+    <string name="this_month">bu ay</string>
+    <string name="streak_current">%1$d günlük seri</string>
+    <string name="streak_longest">En uzun seri: %1$d gün</string>
+    <string name="total_completed">Toplam %1$d vakit</string>
+    <string name="prayers_label">vakit</string>
+    <string name="rate_label">oran</string>
+    <string name="full_days">tam gün</string>
+    <string name="heatmap">Takvim</string>
+    <string name="less">az</string>
+    <string name="more">çok</string>
+    <string name="tracked_days">%1$d / %2$d gün</string>
+    <string name="prayer_breakdown">Vakit Bazında</string>
+    <string name="daily_log">Günlük Kayıt</string>
+    <string name="today">bugün</string>
+    <string name="stats_footer">Bir güne dokunarak o günün vakitlerini işaretleyebilirsin.</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Ayarlar</string>
+    <string name="settings_headline">Tercihler</string>
+    <string name="section_appearance">Görünüm</string>
+    <string name="section_language">Dil</string>
+    <string name="section_location">Konum</string>
+    <string name="section_calculation">Hesaplama</string>
+    <string name="section_notifications">Bildirimler</string>
+    <string name="section_about">Hakkında</string>
+
+    <string name="theme_dark">Siyah</string>
+    <string name="theme_dark_desc">Karanlık arayüz</string>
+    <string name="theme_light">Beyaz</string>
+    <string name="theme_light_desc">Aydınlık arayüz</string>
+    <string name="theme_system">Sistem teması</string>
+    <string name="theme_system_desc">Telefonunuzun açık/koyu mod ayarına uy.</string>
+    <string name="theme_system_hint">Sistem teması kullanılıyor</string>
+    <string name="theme_system_action">Sisteme uy</string>
+    <string name="theme_system_note">Tema elle seçildi</string>
+
+    <string name="lang_system">Sistem</string>
+    <string name="language_hint">Dil değişikliği uygulamayı yeniden başlattığınızda tümüyle uygulanır.</string>
+
+    <string name="city">Şehir</string>
+    <string name="choose_city">Şehir seç</string>
+    <string name="search_city">Şehir ara…</string>
+    <string name="use_my_location">Konumumu kullan</string>
+    <string name="use_my_location_desc">Cihaz konumuna göre vakitler</string>
+
+    <string name="calc_method">Hesaplama yöntemi</string>
+    <string name="asr_madhab">İkindi mezhebi</string>
+    <string name="madhab_shafi">Şafiî / Hanbelî / Mâlikî</string>
+    <string name="madhab_hanafi">Hanefî</string>
+    <string name="adjustments">Vakit düzeltmeleri</string>
+    <string name="adjustments_desc">Vakitleri dakika bazında ileri/geri alabilirsin.</string>
+    <string name="adjustments_custom">Özel düzeltme uygulanıyor</string>
+    <string name="adjustments_default">Varsayılan</string>
+
+    <string name="notifications">Vakit bildirimleri</string>
+    <string name="notifications_desc">Namaz öncesi hatırlatma al</string>
+    <string name="reminder_before">Hatırlatma zamanı</string>
+    <string name="at_prayer_time">Vakit girdiğinde</string>
+    <string name="minutes_before">%1$d dakika önce</string>
+    <string name="time_format">Saat biçimi</string>
+    <string name="time_24h">24 saat</string>
+    <string name="time_12h">12 saat</string>
+
+    <string name="about_tagline">Sade, siyah-beyaz namaz vakitleri.</string>
+    <string name="about_version">Sürüm</string>
+    <string name="about_package">Paket adı</string>
+    <string name="about_developer">Geliştirici</string>
+    <string name="made_with_care">Özenle hazırlandı</string>
+
+    <string name="enable">Etkinleştir</string>
+    <string name="cancel">Vazgeç</string>
+    <string name="close">Kapat</string>
+    <string name="done">Tamam</string>
+    <string name="reset">Sıfırla</string>
+
+    <!-- Calculation methods -->
+    <string name="method_diyanet">Diyanet İşleri</string>
+    <string name="method_diyanet_desc">Türkiye · 18° / 17°</string>
+    <string name="method_diyanet15">Diyanet (15°)</string>
+    <string name="method_diyanet15_desc">Diyanet · yatsı 15°</string>
+    <string name="method_mwl">Müslüman Dünya Birliği</string>
+    <string name="method_mwl_desc">18° / 17°</string>
+    <string name="method_isna">ISNA</string>
+    <string name="method_isna_desc">Kuzey Amerika · 15° / 15°</string>
+    <string name="method_egypt">Mısır Genel Otoritesi</string>
+    <string name="method_egypt_desc">19.5° / 17.5°</string>
+    <string name="method_karachi">Karaçi</string>
+    <string name="method_karachi_desc">18° / 18°</string>
+    <string name="method_umm_al_qura">Ümmü\'l-Kura</string>
+    <string name="method_umm_al_qura_desc">Mekke · yatsı 90 dk</string>
+    <string name="method_gulf">Basra Körfezi</string>
+    <string name="method_gulf_desc">19.5° · yatsı 90 dk</string>
+    <string name="method_kuwait">Kuveyt</string>
+    <string name="method_kuwait_desc">18° / 17.5°</string>
+    <string name="method_qatar">Katar</string>
+    <string name="method_qatar_desc">18° · yatsı 90 dk</string>
+    <string name="method_singapore">Singapur</string>
+    <string name="method_singapore_desc">20° / 18°</string>
+    <string name="method_france">Fransa</string>
+    <string name="method_france_desc">12° / 12°</string>
+
+    <!-- Notifications -->
+    <string name="channel_prayer_name">Namaz hatırlatmaları</string>
+    <string name="channel_prayer_desc">Vakit girdiğinde ya da öncesinde gönderilir.</string>
+    <string name="notif_title">%1$s vakti yaklaşıyor</string>
+    <string name="notif_body">%1$s vaktine %2$d dakika kaldı.</string>
+</resources>

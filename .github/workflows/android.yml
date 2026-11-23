@@ -1,0 +1,116 @@
+name: Build & Release APK
+
+on:
+  push:
+    branches: [main, "arena/**"]
+    tags: ["v*"]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Assemble APK
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+        with:
+          packages: "platforms;android-35 build-tools;35.0.0"
+
+      - name: Gradle cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle.kts', 'gradle/wrapper/gradle-wrapper.properties') }}
+          restore-keys: gradle-${{ runner.os }}-
+
+      - name: Keystore
+        run: |
+          # Prefer a CI-provided keystore (secret), else fall back to the committed dev key.
+          if [ -n "${{ secrets.KEYSTORE_BASE64 }}" ]; then
+            echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > "$RUNNER_TEMP/fsolat-release.jks"
+            echo "KEYSTORE_PATH=$RUNNER_TEMP/fsolat-release.jks" >> "$GITHUB_ENV"
+            echo "Using CI keystore secret."
+          else
+            echo "Using committed development keystore (keystore/fsolat-release.jks)."
+          fi
+
+      - name: Build release APK
+        env:
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: ./gradlew --no-daemon assembleRelease
+
+      - name: Build debug APK
+        run: ./gradlew --no-daemon assembleDebug
+
+      - name: Collect artifacts
+        run: |
+          mkdir -p out
+          find app/build/outputs/apk -name "*.apk" -exec cp {} out/ \;
+          ls -la out
+
+      - name: Upload workflow artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: fsolat-apk
+          path: out/*.apk
+          if-no-files-found: error
+
+      - name: Read version
+        id: version
+        run: |
+          VERSION_NAME=$(grep -oP 'versionName\s*=\s*"\K[^"]+' app/build.gradle.kts | head -1)
+          VERSION_CODE=$(grep -oP 'versionCode\s*=\s*\K[0-9]+' app/build.gradle.kts | head -1)
+          echo "name=${VERSION_NAME:-1.0.0}" >> "$GITHUB_OUTPUT"
+          echo "code=${VERSION_CODE:-1}" >> "$GITHUB_OUTPUT"
+
+      - name: Publish GitHub Release
+        if: github.event_name != 'pull_request' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v'))
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.version.outputs.name }}-${{ github.run_number }}
+          name: Fsolat v${{ steps.version.outputs.name }} (build ${{ github.run_number }})
+          body: |
+            ## Fsolat v${{ steps.version.outputs.name }}
+
+            Siyah-beyaz namaz vakitleri uygulaması. / A monochrome prayer times app.
+
+            **Paket adı / Package name:** `com.hamudenes.fsolat`
+
+            ### Kurulum / Install
+            1. `Fsolat-*.apk` dosyasını indirin.
+            2. Telefonda "Bilinmeyen kaynaklara izin ver" seçeneğini açın.
+            3. APK'yı açıp kurun.
+
+            ### Özellikler
+            - Diyanet dahil 12 hesaplama yöntemi, Şafiî/Hanefî ikindi
+            - Siyah / Beyaz / Sistem teması
+            - Günlük namaz takibi, seri ve istatistikler
+            - Kıble yönü ve Kâbe mesafesi
+            - Türkçe / İngilizce arayüz
+            - Vakit bildirimleri
+
+            > Vakitler matematiksel olarak hesaplanır; cami vakitleriyle küçük farklar olabilir.
+          files: out/*.apk
+          generate_release_notes: false
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
