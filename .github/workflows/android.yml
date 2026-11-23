@@ -72,7 +72,20 @@ jobs:
           exit 1
 
       - name: Build debug APK
-        run: ./gradlew --no-daemon assembleDebug
+        id: debugbuild
+        continue-on-error: true
+        run: ./gradlew --no-daemon assembleDebug --stacktrace 2>&1 | tee debug.log
+
+      - name: Report debug failure
+        if: steps.debugbuild.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          tail -c 60000 debug.log > debug-failure.log || true
+          gh issue create --repo "$GITHUB_REPOSITORY" \
+            --title "CI debug build failure (run ${{ github.run_number }})" \
+            --body-file debug-failure.log || true
+          exit 1
 
       - name: Collect artifacts
         run: |
