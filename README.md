@@ -7,6 +7,8 @@ Sade, hızlı ve reklamsız — Diyanet yöntemiyle dakikası dakikasına hesapl
 
 `com.hamudenes.fsolat`
 
+<img src="docs/preview.png" alt="Fsolat ekranlar" width="100%" />
+
 </div>
 
 ---
@@ -40,11 +42,11 @@ Min. sürüm: Android 8.0 (API 26)
 
 ## Ekranlar
 
-| Ana | İstatistik | Ayarlar |
+| Ana (siyah) | İstatistik (beyaz) | Ayarlar (siyah) |
 |---|---|---|
 | Sıradaki vakit, geri sayım, bugünün vakitleri, kıble | Seri, aylık oran, ısı haritası, vakit dağılımı | Siyah/Beyaz/Sistem tema, dil, konum, yöntem, bildirim |
 
-Alt navigasyon çubuğu üç sekmeli: **Ana · İstatistik · Ayarlar**
+Alt navigasyon çubuğu üç sekmeli: **Ana · İstatistik · Ayarlar** — tema Ayarlar → Görünüm'den anında değişir.
 
 ## Kurulum (geliştirici)
 
