@@ -41,8 +41,7 @@ object PrayerService {
         fun timeOf(prayer: Prayer): PrayerTime? = list.firstOrNull { it.prayer == prayer }
     }
 
-    private fun localDayNumber(date: LocalDate, zone: ZoneId): Long =
-        date.atStartOfDay(zone).toEpochSecond() / 86400L
+    private fun localDayNumber(date: LocalDate): Long = date.toEpochDay()
 
     private fun utcOffsetHours(date: LocalDate, zone: ZoneId): Double {
         val instant = date.atStartOfDay(zone).toInstant()
@@ -66,7 +65,7 @@ object PrayerService {
         }
         val tz = utcOffsetHours(date, zone)
         val computed = PrayerCalculator.calculate(
-            localDayNumber = localDayNumber(date, zone),
+            localDayNumber = localDayNumber(date),
             latitude = latitude,
             longitude = longitude,
             timeZoneHours = tz,

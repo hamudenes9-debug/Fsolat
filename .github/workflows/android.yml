@@ -58,7 +58,9 @@ jobs:
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-        run: ./gradlew --no-daemon assembleRelease --stacktrace 2>&1 | tee build.log
+        run: |
+          set -o pipefail
+          ./gradlew --no-daemon assembleRelease --stacktrace 2>&1 | tee build.log
 
       - name: Report build failure
         if: steps.build.outcome == 'failure'
