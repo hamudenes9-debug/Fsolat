@@ -54,10 +54,6 @@ jobs:
       - name: Build release APK
         id: build
         continue-on-error: true
-        env:
-          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
-          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
         run: |
           set -o pipefail
           ./gradlew --no-daemon assembleRelease --stacktrace 2>&1 | tee build.log
@@ -77,20 +73,6 @@ jobs:
         continue-on-error: true
         run: ./gradlew --no-daemon assembleDebug 2>&1 | tail -40 || true
 
-      - name: Collect artifacts
-        run: |
-          mkdir -p out
-          find app/build/outputs/apk -name "*.apk" -exec cp {} out/ \; || true
-          ls -la out || true
-          echo "APK count: $(find out -name '*.apk' | wc -l)"
-
-      - name: Upload workflow artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: fsolat-apk
-          path: out/*.apk
-          if-no-files-found: error
-
       - name: Read version
         id: version
         run: |
@@ -98,6 +80,37 @@ jobs:
           VERSION_CODE=$(grep -oP 'versionCode\s*=\s*\K[0-9]+' app/build.gradle.kts | head -1)
           echo "name=${VERSION_NAME:-1.0.0}" >> "$GITHUB_OUTPUT"
           echo "code=${VERSION_CODE:-1}" >> "$GITHUB_OUTPUT"
+
+      - name: Collect artifacts
+        env:
+          VERSION_NAME: ${{ steps.version.outputs.name }}
+        run: |
+          mkdir -p out
+          find app/build/outputs/apk -name "*.apk" -exec cp {} out/ \; || true
+          ls -la out || true
+          echo "APK count: $(find out -name '*.apk' | wc -l)"
+          # Human friendly asset name for the signed build
+          if [ -f out/app-release.apk ]; then
+            cp out/app-release.apk "out/Fsolat-v${VERSION_NAME:-1.0.0}.apk"
+          fi
+          for apk in out/*.apk; do
+            echo "== $apk"
+          done
+
+      - name: Verify signature
+        run: |
+          APK=$(ls out/app-release.apk 2>/dev/null || true)
+          if [ -n "$APK" ]; then
+            BT=$(ls -d "$ANDROID_SDK_ROOT"/build-tools/* | tail -1)
+            "$BT/apksigner" verify --print-certs "$APK" | head -5
+          fi
+
+      - name: Upload workflow artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: fsolat-apk
+          path: out/*.apk
+          if-no-files-found: error
 
       - name: Publish GitHub Release
         if: github.event_name != 'pull_request' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v'))

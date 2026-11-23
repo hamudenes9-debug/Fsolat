@@ -8,7 +8,8 @@
 .externalNativeBuild
 .cxx
 local.properties
-*.jks
+# Development signing key is intentionally committed for reproducible community builds
+!keystore/fsolat-release.jks
 *.keystore
 keystore.properties
 /app/build
