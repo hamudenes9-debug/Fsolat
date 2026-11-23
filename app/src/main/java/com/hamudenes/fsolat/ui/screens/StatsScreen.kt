@@ -51,6 +51,7 @@ import com.hamudenes.fsolat.ui.components.MonoCard
 import com.hamudenes.fsolat.ui.components.RingProgress
 import com.hamudenes.fsolat.ui.components.SectionLabel
 import com.hamudenes.fsolat.ui.components.SegmentedControl
+import com.hamudenes.fsolat.ui.theme.MonoColors
 import com.hamudenes.fsolat.ui.theme.mono
 import java.time.LocalDate
 import java.time.YearMonth
@@ -196,7 +197,7 @@ fun StatsScreen(
                             Modifier
                                 .size(10.dp)
                                 .clip(RoundedCornerShape(3.dp))
-                                .background(levelColor(level))
+                                .background(levelColor(level, mono))
                         )
                         Spacer(Modifier.width(4.dp))
                     }
@@ -407,7 +408,7 @@ private fun HeatmapGrid(logs: List<DayLog>, weeks: Int) {
                                 when {
                                     future -> Color.Transparent
                                     date == today -> mono.onBackground
-                                    else -> levelColor(count)
+                                    else -> levelColor(count, mono)
                                 }
                             )
                     )
@@ -417,8 +418,7 @@ private fun HeatmapGrid(logs: List<DayLog>, weeks: Int) {
     }
 }
 
-@Composable
-private fun levelColor(level: Int): Color = when (level) {
+private fun levelColor(level: Int, mono: MonoColors): Color = when (level) {
     0 -> mono.surfaceHigh
     1, 2 -> mono.outline
     3, 4 -> mono.onSurfaceVariant

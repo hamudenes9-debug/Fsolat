@@ -57,6 +57,7 @@ import com.hamudenes.fsolat.ui.components.InvertedCard
 import com.hamudenes.fsolat.ui.components.MonoCard
 import com.hamudenes.fsolat.ui.components.ProgressPips
 import com.hamudenes.fsolat.ui.components.SectionLabel
+import com.hamudenes.fsolat.ui.theme.LocalMono
 import com.hamudenes.fsolat.ui.theme.mono
 import com.hamudenes.fsolat.util.CoordFormat
 import com.hamudenes.fsolat.util.Qibla
@@ -446,6 +447,7 @@ fun QiblaDial(
     showNorth: Boolean = true
 ) {
     val density = LocalDensity.current
+    val mono = LocalMono.current
     Canvas(modifier) {
         val stroke = with(density) { 1.5.dp.toPx() }
         val r = size.minDimension / 2 - stroke

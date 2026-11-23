@@ -60,7 +60,9 @@ import com.hamudenes.fsolat.ui.theme.mono
 enum class Tab(val label: Int, val icon: ImageVector, val selectedIcon: ImageVector) {
     HOME(com.hamudenes.fsolat.R.string.tab_home, Icons.Outlined.Home, Icons.Rounded.Home),
     STATS(com.hamudenes.fsolat.R.string.tab_stats, Icons.Outlined.BarChart, Icons.Rounded.BarChart),
-    SETTINGS(com.hamudenes.fsolat.R.string.tab_settings, Icons.Outlined.Settings, Icons.Rounded.Settings)
+    SETTINGS(com.hamudenes.fsolat.R.string.tab_settings, Icons.Outlined.Settings, Icons.Rounded.Settings);
+
+    val index: Int get() = entries.indexOf(this)
 }
 
 @Composable
