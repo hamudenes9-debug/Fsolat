@@ -64,8 +64,12 @@ android {
     }
 }
 
-fun resolveValue(key: String): String? =
-    System.getenv(key) ?: (project.findProperty(key) as String?)
+/** Env var wins, but empty strings (unset GitHub secrets) must fall back to gradle.properties. */
+fun resolveValue(key: String): String? {
+    val fromEnv = System.getenv(key)?.takeIf { it.isNotBlank() }
+    val fromProps = (project.findProperty(key) as String?)?.takeIf { it.isNotBlank() }
+    return fromEnv ?: fromProps
+}
 
 dependencies {
     val composeBom = platform("androidx.compose:compose-bom:2024.10.01")
