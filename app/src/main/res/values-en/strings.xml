@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Fsolat</string>
+
+    <!-- Tabs -->
+    <string name="tab_home">Home</string>
+    <string name="tab_stats">Stats</string>
+    <string name="tab_settings">Settings</string>
+
+    <!-- Prayers -->
+    <string name="prayer_fajr">Fajr</string>
+    <string name="prayer_sunrise">Sunrise</string>
+    <string name="prayer_dhuhr">Dhuhr</string>
+    <string name="prayer_asr">Asr</string>
+    <string name="prayer_maghrib">Maghrib</string>
+    <string name="prayer_isha">Isha</string>
+
+    <!-- Home -->
+    <string name="next_prayer">Next Prayer</string>
+    <string name="time_remaining">time remaining</string>
+    <string name="today_prayers">Today\'s Prayers</string>
+    <string name="done_of">%1$d/%2$d completed</string>
+    <string name="up_next">Up next</string>
+    <string name="tomorrow">Tomorrow</string>
+    <string name="qibla">Qibla</string>
+    <string name="qibla_distance">%1$d km to the Kaaba</string>
+    <string name="from_north">from north</string>
+    <string name="home_footer">Times are approximate — always confirm with your local mosque before praying.</string>
+
+    <!-- Stats -->
+    <string name="stats_title">Stats</string>
+    <string name="stats_headline">Daily rhythm</string>
+    <string name="range_week">7 days</string>
+    <string name="range_month">30 days</string>
+    <string name="range_season">90 days</string>
+    <string name="this_month">this month</string>
+    <string name="streak_current">%1$d day streak</string>
+    <string name="streak_longest">Longest streak: %1$d days</string>
+    <string name="total_completed">%1$d prayers total</string>
+    <string name="prayers_label">prayers</string>
+    <string name="rate_label">rate</string>
+    <string name="full_days">full days</string>
+    <string name="heatmap">Calendar</string>
+    <string name="less">less</string>
+    <string name="more">more</string>
+    <string name="tracked_days">%1$d / %2$d days</string>
+    <string name="prayer_breakdown">By Prayer</string>
+    <string name="daily_log">Daily Log</string>
+    <string name="today">today</string>
+    <string name="stats_footer">Tap a day to mark its prayers.</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_headline">Preferences</string>
+    <string name="section_appearance">Appearance</string>
+    <string name="section_language">Language</string>
+    <string name="section_location">Location</string>
+    <string name="section_calculation">Calculation</string>
+    <string name="section_notifications">Notifications</string>
+    <string name="section_about">About</string>
+
+    <string name="theme_dark">Black</string>
+    <string name="theme_dark_desc">Dark interface</string>
+    <string name="theme_light">White</string>
+    <string name="theme_light_desc">Light interface</string>
+    <string name="theme_system">System theme</string>
+    <string name="theme_system_desc">Follows your phone\'s light/dark setting.</string>
+    <string name="theme_system_hint">Following the system theme</string>
+    <string name="theme_system_action">Follow system</string>
+    <string name="theme_system_note">Theme chosen manually</string>
+
+    <string name="lang_system">System</string>
+    <string name="language_hint">Language changes apply fully after you restart the app.</string>
+
+    <string name="city">City</string>
+    <string name="choose_city">Choose a city</string>
+    <string name="search_city">Search cities…</string>
+    <string name="use_my_location">Use my location</string>
+    <string name="use_my_location_desc">Times from your device position</string>
+
+    <string name="calc_method">Calculation method</string>
+    <string name="asr_madhab">Asr madhab</string>
+    <string name="madhab_shafi">Shafi\'i / Hanbali / Maliki</string>
+    <string name="madhab_hanafi">Hanafi</string>
+    <string name="adjustments">Time adjustments</string>
+    <string name="adjustments_desc">Shift each prayer by a number of minutes.</string>
+    <string name="adjustments_custom">Custom adjustment applied</string>
+    <string name="adjustments_default">Default</string>
+
+    <string name="notifications">Prayer notifications</string>
+    <string name="notifications_desc">Get a reminder before each prayer</string>
+    <string name="reminder_before">Reminder time</string>
+    <string name="at_prayer_time">At prayer time</string>
+    <string name="minutes_before">%1$d minutes before</string>
+    <string name="time_format">Time format</string>
+    <string name="time_24h">24-hour</string>
+    <string name="time_12h">12-hour</string>
+
+    <string name="about_tagline">Quiet, black-and-white prayer times.</string>
+    <string name="about_version">Version</string>
+    <string name="about_package">Package</string>
+    <string name="about_developer">Developer</string>
+    <string name="made_with_care">Made with care</string>
+
+    <string name="enable">Enable</string>
+    <string name="cancel">Cancel</string>
+    <string name="close">Close</string>
+    <string name="done">Done</string>
+    <string name="reset">Reset</string>
+
+    <!-- Calculation methods -->
+    <string name="method_diyanet">Diyanet (Turkey)</string>
+    <string name="method_diyanet_desc">Turkey · 18° / 17°</string>
+    <string name="method_diyanet15">Diyanet (15°)</string>
+    <string name="method_diyanet15_desc">Diyanet · Isha 15°</string>
+    <string name="method_mwl">Muslim World League</string>
+    <string name="method_mwl_desc">18° / 17°</string>
+    <string name="method_isna">ISNA</string>
+    <string name="method_isna_desc">North America · 15° / 15°</string>
+    <string name="method_egypt">Egyptian Authority</string>
+    <string name="method_egypt_desc">19.5° / 17.5°</string>
+    <string name="method_karachi">Karachi</string>
+    <string name="method_karachi_desc">18° / 18°</string>
+    <string name="method_umm_al_qura">Umm al-Qura</string>
+    <string name="method_umm_al_qura_desc">Makkah · Isha 90 min</string>
+    <string name="method_gulf">Gulf Region</string>
+    <string name="method_gulf_desc">19.5° · Isha 90 min</string>
+    <string name="method_kuwait">Kuwait</string>
+    <string name="method_kuwait_desc">18° / 17.5°</string>
+    <string name="method_qatar">Qatar</string>
+    <string name="method_qatar_desc">18° · Isha 90 min</string>
+    <string name="method_singapore">Singapore</string>
+    <string name="method_singapore_desc">20° / 18°</string>
+    <string name="method_france">France</string>
+    <string name="method_france_desc">12° / 12°</string>
+
+    <!-- Notifications -->
+    <string name="channel_prayer_name">Prayer reminders</string>
+    <string name="channel_prayer_desc">Sent at or before prayer time.</string>
+    <string name="notif_title">%1$s is approaching</string>
+    <string name="notif_body">%1$s starts in %2$d minutes.</string>
+</resources>
