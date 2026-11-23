@@ -354,12 +354,15 @@ private fun PrayerRow(
                     tint = mono.onSurfaceVariant,
                     modifier = Modifier.size(15.dp)
                 )
-                else -> Canvas(Modifier.size(30.dp)) {
-                    drawCircle(
-                        color = if (isNext) mono.onBackground else mono.outline,
-                        radius = size.minDimension / 2 - 1.5f,
-                        style = Stroke(width = if (isNext) 3f else 1.5f)
-                    )
+                else -> {
+                    val ringColor = if (isNext) mono.onBackground else mono.outline
+                    Canvas(Modifier.size(30.dp)) {
+                        drawCircle(
+                            color = ringColor,
+                            radius = size.minDimension / 2 - 1.5f,
+                            style = Stroke(width = if (isNext) 3f else 1.5f)
+                        )
+                    }
                 }
             }
         }

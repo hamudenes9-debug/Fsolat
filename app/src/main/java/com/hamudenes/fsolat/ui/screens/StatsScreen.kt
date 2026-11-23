@@ -223,7 +223,7 @@ fun StatsScreen(
         MonoCard(Modifier.fillMaxWidth()) {
             Column(Modifier.padding(horizontal = 18.dp, vertical = 8.dp)) {
                 Prayer.prayersOnly.forEachIndexed { index, prayer ->
-                    val count = logs.sumOf { if (prayer.key in it.done) 1 else 0 }
+                    val count = logs.count { prayer.key in it.done }
                     val ratio = if (logs.isEmpty()) 0f else count.toFloat() / logs.size
                     Row(
                         Modifier
